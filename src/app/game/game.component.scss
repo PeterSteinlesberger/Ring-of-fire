@@ -1,0 +1,16 @@
+.game-field {
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    margin: 0;
+ background-image: url('/assets/img/wodd-table background.jpg');
+   background-size: cover;
+}
+
+.play-card-backside {
+    position: relative;
+    height: 280px;
+    width: auto;
+    top: 400px;
+    left: 670px;
+}
