@@ -16,5 +16,19 @@ margin-top: 560px;
     img {
     position: absolute;
        height: 260px; 
+       width: 160px;
     }
+}
+
+.top-card {
+    cursor: pointer;
+transition: all 150ms ease-in-out;
+    &:hover {
+        transform: scale(1.03) translateY(-12px);
+    }
+}
+
+.pick-card {
+    transition: all 150ms ease-in-out;
+    transform: scale(1.3) !important;
 }
