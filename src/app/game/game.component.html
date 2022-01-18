@@ -25,7 +25,7 @@
 
 </div>
 
-<app-game-info [card]="currentCard" class="pin-card"></app-game-info>
+<app-game-info *ngIf="this.currentCard" [cardValue]="currentCard" class="pin-card"></app-game-info>
 
 <button  (click)="openDialog()" class="btn-add"   mat-fab color="primary" aria-label="Example icon button with a delete icon">
     <mat-icon>add</mat-icon>
