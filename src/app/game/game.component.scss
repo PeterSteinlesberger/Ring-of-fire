@@ -57,14 +57,20 @@
 }
 
 .player-position {
-    position: absolute;
+   position: absolute;
     right: 0;
 }
 
 .btn-add {
     position: absolute;
-    right: 60px;
-    bottom: 60px;
-    background-color: rgb(22, 22, 22);
-}
+    right: 45px;
+    bottom: 45px;
+    background-image: url("/assets/img/button/btn-backgorund.PNG");
+    background-size: cover;
+    border: solid 2px rgb(240, 230, 140);
+    color: rgb(240, 230, 140);
 
+    &:hover {
+        filter: brightness(1.25);
+    }
+}

@@ -1,20 +1,29 @@
 .player-container {
-    width: 410px;
-    height: 120px;
+    height: 70px;
+    width: 210px;
     display: flex;
     align-items: center;
-background-image: url('/assets/img/players/player-field-removebg-preview.png');
-background-size: 410px 120px;
+    background-image: url("/assets/img/players/player-field-removebg-preview.png");
+    background-size: auto 70px;
     span {
-        font-size: 32px;
-        margin-left: 38px;
+        font-size: 24px;
+        margin-left: 16px;
+        color: white;
+        font-family: "Kaushan Script", cursive;
     }
     img {
-        height: 91px;
-        width: 91px;
+        height: 56px;
+        width: 56px;
         border-radius: 50%;
-        margin-left: 14px;
+        margin-left: 8px;
+        margin-top: -1px;
         object-fit: cover;
     }
 }
 
+.active-player {
+    background-image: url("/assets/img/players/player-background-blue.png");
+    span {
+        color: rgb(240, 230, 140);
+    }
+}
