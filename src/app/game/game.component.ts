@@ -15,7 +15,6 @@ export class GameComponent implements OnInit {
 
   constructor( public dialog: MatDialog ) { }
 
-
   ngOnInit(): void {
     this.newGame();
     console.log(this.game);
@@ -30,7 +29,6 @@ export class GameComponent implements OnInit {
       this.currentCard = this.game.stack.pop();
       this.pickCardAnimation = true;
 
-
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
@@ -44,5 +42,4 @@ export class GameComponent implements OnInit {
       this.game.players.push(name);
     });
   }
-
 }
