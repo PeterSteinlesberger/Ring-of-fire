@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ring-of-fire-multiplayer": {
+      "hosting": {
+        "ring-of-fire": [
+          "ring-of-fire-multiplayer"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ring-of-fire-multiplayer"
+  }
+}

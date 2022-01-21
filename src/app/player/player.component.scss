@@ -3,7 +3,7 @@
     width: 210px;
     display: flex;
     align-items: center;
-    background-image: url("/assets/img/players/player-field-removebg-preview.png");
+    background-image: url("../../assets/img/players/player-field-removebg-preview.png");
     background-size: auto 70px;
     span {
         font-size: 24px;
@@ -22,7 +22,7 @@
 }
 
 .active-player {
-    background-image: url("/assets/img/players/player-background-blue.png");
+    background-image: url("../../assets/img/players/player-background-blue.png");
     span {
         color: rgb(240, 230, 140);
     }
