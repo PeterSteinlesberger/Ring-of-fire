@@ -25,7 +25,9 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { HttpClientModule } from '@angular/common/http';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     GameInfoComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
@@ -48,16 +51,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     MatCardModule,
     FormsModule,
     AngularFirestoreModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAnalytics(() => getAnalytics()),
-    provideAuth(() => getAuth()),
+    AngularFireModule.initializeApp(environment.firebase),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    provideFunctions(() => getFunctions()),
-    provideMessaging(() => getMessaging()),
-    providePerformance(() => getPerformance()),
-    provideRemoteConfig(() => getRemoteConfig()),
-    provideStorage(() => getStorage())
   ],
   providers: [
     ScreenTrackingService,UserTrackingService
@@ -65,4 +61,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
   bootstrap: [ AppComponent ]
   
 })
+
+
 export class AppModule { }
