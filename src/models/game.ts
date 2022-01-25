@@ -13,6 +13,16 @@ export class Game {
         }
         shuffleArray(this.stack);
     }
+
+public toJson() {
+    return {
+        players: this.players,
+        stack: this.stack,
+        playedCards: this.playedCards,
+        currentPlayer: this.currentPlayer
+    }
+}
+
 }
  /* Randomize array in-place using Durstenfeld shuffle algorithm */
  function shuffleArray(array: any) {
