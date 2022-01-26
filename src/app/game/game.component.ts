@@ -17,11 +17,13 @@ export class GameComponent implements OnInit {
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    console.log('test');
     this.newGame();
+    
     this.route.params.subscribe((params) => {
       console.log(params['id']);
       this.gameId = params['id'];
-      
+      console.log(this.gameId);
       this
         .firestore
         .collection('games')
@@ -46,8 +48,8 @@ export class GameComponent implements OnInit {
   takeCard() {
     if (!this.game.pickCardAnimation) {
       this.game.currentCard = this.game.stack.pop();
-      this.saveGame();
       this.game.pickCardAnimation = true;
+      this.saveGame();
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
       setTimeout(() => {
