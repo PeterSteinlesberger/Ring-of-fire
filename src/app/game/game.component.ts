@@ -35,14 +35,10 @@ export class GameComponent implements OnInit {
        this.game.stack = game.stack;
      });
     });
-   
   } 
 
   newGame() {
     this.game = new Game();
-  this.firestore
-   .collection('games')
-   .add(this.game.toJson());
   }
 
   takeCard() {
