@@ -18,14 +18,14 @@
         <img *ngFor="let card of game.playedCards" class="played-card" src="assets/img/cards/{{ card }}.png">
 
         <!-- Current cards and animation -->
-        <img (click)="takeCard()" *ngIf="pickCardAnimation" class="pick-card"
-            [ngStyle]="{'right.px': 15, 'bottom.px': 9}" src="assets/img/cards/{{ currentCard }}.png">
+        <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card"
+            [ngStyle]="{'right.px': 15, 'bottom.px': 9}" src="assets/img/cards/{{ game.currentCard }}.png">
     </div>
 
 
 </div>
 
-<app-game-info *ngIf="this.currentCard" [cardValue]="currentCard" class="pin-card"></app-game-info>
+<app-game-info *ngIf="this.game.currentCard" [cardValue]="game.currentCard" class="pin-card"></app-game-info>
 
 <button  (click)="openDialog()" class="btn-add"   mat-fab color="primary" aria-label="Example icon button with a delete icon">
     <mat-icon>add</mat-icon>
