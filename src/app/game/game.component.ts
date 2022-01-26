@@ -14,28 +14,31 @@ export class GameComponent implements OnInit {
   pickCardAnimation = false;
   currentCard: any;
   game!: Game;
+  gameId!: string;
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.newGame();
-   this.route.params.subscribe((params) => {
-     console.log(params['id']);
-
-     this
-     .firestore
-     .collection('games')
-     .doc(params['id'])
-     .valueChanges()
-     .subscribe((game: any) => {
-       console.log('Game update', game);
-       this.game.currentPlayer = game.currentPlayer;
-       this.game.playedCards = game.playedCards;
-       this.game.players = game.players;
-       this.game.stack = game.stack;
-     });
+    this.route.params.subscribe((params) => {
+      console.log(params['id']);
+      this.gameId = params['id'];
+      console.log('testlauf:', this.gameId );
+      
+      this
+        .firestore
+        .collection('games')
+        .doc(this.gameId)
+        .valueChanges()
+        .subscribe((game: any) => {
+          console.log('Game update', game);
+          this.game.currentPlayer = game.currentPlayer;
+          this.game.playedCards = game.playedCards;
+          this.game.players = game.players;
+          this.game.stack = game.stack;
+        });
     });
-  } 
+  }
 
   newGame() {
     this.game = new Game();
@@ -59,8 +62,17 @@ export class GameComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((name: string) => {
       if (name && name.length > 0) {
-      this.game.players.push(name);
-    }
+        this.game.players.push(name);
+        this.saveGame();
+      }
     });
+  }
+
+  saveGame() {
+    this
+      .firestore
+      .collection('games')
+      .doc(this.gameId)
+      .update(this.game.toJson());
   }
 }
