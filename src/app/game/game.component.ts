@@ -23,7 +23,6 @@ export class GameComponent implements OnInit {
     this.route.params.subscribe((params) => {
       console.log(params['id']);
       this.gameId = params['id'];
-      console.log('testlauf:', this.gameId );
       
       this
         .firestore
@@ -47,6 +46,7 @@ export class GameComponent implements OnInit {
   takeCard() {
     if (!this.pickCardAnimation) {
       this.currentCard = this.game.stack.pop();
+      this.saveGame();
       this.pickCardAnimation = true;
 
       this.game.currentPlayer++;
@@ -54,6 +54,7 @@ export class GameComponent implements OnInit {
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
+        this.saveGame();
       }, 1300);
     }
   }
