@@ -11,11 +11,19 @@
 
 .card-stack {
     position: relative;
-    margin-top: 560px;
+    margin-top: 510px;
+    margin-left: 10px;
     img {
         position: absolute;
         height: 260px;
         width: 160px;
+        @media (max-width: 800px) {
+            height: 190px;
+        width: 115px;
+                }
+    }
+    @media (max-width: 800px) {
+margin-top: 420px;
     }
 }
 
@@ -31,6 +39,12 @@
     right: 15px;
     top: -270px;
     transform: scale(1) translateX(380px) translateY(-295px) rotate(-14deg);
+
+    @media (max-width: 800px) {
+        right: 235px;
+        top: -120px;
+        transform: scale(1) translateX(380px) translateY(-295px) rotate(-14deg);
+            }
 }
 
 .pick-card {
