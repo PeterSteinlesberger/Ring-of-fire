@@ -1,0 +1,33 @@
+.player-container {
+    height: 40px;
+    width: 165px;
+    display: flex;
+    align-items: center;
+    background-image: url("../../assets/img/players/player-field-removebg-preview.png");
+    background-size: auto 40px;
+    transform: rotate(-90deg);
+    margin-left: -70px;
+
+    span {
+        font-size: 18px;
+        margin-left: 6px;
+        color: white;
+        font-family: "Kaushan Script", cursive;
+    }
+    img {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        margin-left: 6px;
+        margin-top: -4px;
+        object-fit: cover;
+        transform: rotate(90deg);
+    }
+}
+
+.active-player {
+    background-image: url("../../assets/img/players/player-background-blue.png");
+    span {
+        color: rgb(240, 230, 140);
+    }
+}
