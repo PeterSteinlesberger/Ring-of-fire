@@ -9,14 +9,20 @@
 
 .card-img {
     position: absolute;
-    top: 60px;
-    left: 50px;
-    height: 14vh;
+    top: 390px;
+    height: 130px;
+}
+
+.ring-img {
+    position: absolute;
+    top: 160px;
+    height: 550px;
+    filter: brightness(1.4);
 }
 
 .headline {
     position: absolute;
-    top: 160px;
+    top: 130px;
     font-size: 110px;
     font-family: 'Kaushan Script', cursive;
     color: #ffffff;
@@ -31,15 +37,15 @@
 }
 
 .start-button {
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: center;
-    align-items: center;
+   top: 330px;
  margin-top: 350px;
 
     img {
         position: absolute;
-        height: 90px;
+        height: 100px;
         width: 22vw;
 
         &:hover {
