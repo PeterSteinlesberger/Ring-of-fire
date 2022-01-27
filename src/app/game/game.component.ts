@@ -46,6 +46,7 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
+    if (this.game.players.length > 1) {
     if (!this.game.pickCardAnimation) {
       this.game.currentCard = this.game.stack.pop();
       this.game.pickCardAnimation = true;
@@ -58,6 +59,7 @@ export class GameComponent implements OnInit {
         this.saveGame();
       }, 1300);
     }
+  }
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
