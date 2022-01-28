@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
@@ -19,7 +19,7 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     console.log('test');
     this.newGame();
-    
+
     this.route.params.subscribe((params) => {
       console.log(params['id']);
       this.gameId = params['id'];
@@ -47,19 +47,21 @@ export class GameComponent implements OnInit {
 
   takeCard() {
     if (this.game.players.length > 1) {
-    if (!this.game.pickCardAnimation) {
-      this.game.currentCard = this.game.stack.pop();
-      this.game.pickCardAnimation = true;
-      this.game.currentPlayer++;
-      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
-      this.saveGame();
-      setTimeout(() => {
-        this.game.playedCards.push(this.game.currentCard);
-        this.game.pickCardAnimation = false;
+      if (!this.game.pickCardAnimation) {
+        this.game.currentCard = this.game.stack.pop();
+        this.game.pickCardAnimation = true;
+        this.game.currentPlayer++;
+        this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
         this.saveGame();
-      }, 1300);
+        setTimeout(() => {
+          this.game.playedCards.push(this.game.currentCard);
+          this.game.pickCardAnimation = false;
+          this.saveGame();
+        }, 1300);
+      }
+    } else {
+    alert('Please add minimum 2 players first.');
     }
-  }
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
@@ -79,4 +81,11 @@ export class GameComponent implements OnInit {
       .doc(this.gameId)
       .update(this.game.toJson());
   }
+
+  
+  editPlayer(playerId: number) {
+    console.log('Edit Player', playerId);
+    
+  }
+
 }

@@ -108,3 +108,11 @@ margin-top: 420px;
     width: 100vw;
     }
 }
+
+app-player, app-player-mobile {
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(1.15);
+    }
+}

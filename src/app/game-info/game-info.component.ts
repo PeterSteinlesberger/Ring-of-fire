@@ -41,5 +41,4 @@ export class GameInfoComponent implements OnInit, OnChanges {
    this.description = this.cardAction[cardNumber - 1].description;
     }
   }
-
 }

@@ -1,9 +1,9 @@
 
 
-<app-player *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 100 + (i * 80)}" [name]="player"
+<app-player (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 100 + (i * 80)}" [name]="player"
      [playerActive]="i == game.currentPlayer"      class="player-position hide-mobile" ></app-player>
 
-     <app-player-mobile *ngFor="let player of game.players; let i = index;" [ngStyle]="{'left.px': 20 + (i * 80), 'top.px': 20}" [name]="player"
+     <app-player-mobile (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'left.px': 20 + (i * 80), 'top.px': 20}" [name]="player"
      [playerActive]="i == game.currentPlayer"      class="player-position hide-desktop" ></app-player-mobile>
 
 
@@ -23,8 +23,6 @@
         <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card"
             [ngStyle]="{'right.px': 15, 'bottom.px': 9}" src="assets/img/cards/{{ game.currentCard }}.png">
     </div>
-
-
 </div>
 
 <app-game-info *ngIf="this.game.currentCard" [cardValue]="game.currentCard" class="pin-card"></app-game-info>
@@ -32,3 +30,4 @@
 <button  (click)="openDialog()" class="btn-add"   mat-fab color="primary" aria-label="Example icon button with a delete icon">
     <mat-icon>add</mat-icon>
   </button>
+  
