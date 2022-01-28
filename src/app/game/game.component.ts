@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { EditPlayerComponent } from '../edit-player/edit-player.component';
 
 @Component({
   selector: 'app-game',
@@ -63,6 +64,17 @@ export class GameComponent implements OnInit {
     alert('Please add minimum 2 players first.');
     }
   }
+
+  editPlayer(playerId: number) {
+    console.log('Edit Player', playerId);
+    const dialogRef = this.dialog.open(EditPlayerComponent);
+
+    dialogRef.afterClosed().subscribe((change: string) => {
+     console.log('Recieved change', change);
+     
+    });
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
@@ -81,11 +93,4 @@ export class GameComponent implements OnInit {
       .doc(this.gameId)
       .update(this.game.toJson());
   }
-
-  
-  editPlayer(playerId: number) {
-    console.log('Edit Player', playerId);
-    
-  }
-
 }
