@@ -35,6 +35,7 @@ export class GameComponent implements OnInit {
           this.game.currentPlayer = game.currentPlayer;
           this.game.playedCards = game.playedCards;
           this.game.players = game.players;
+          this.game.playerImages = game.playerImages;
           this.game.stack = game.stack;
           this.game.pickCardAnimation = game.pickCardAnimation;
           this.game.currentCard = game.currentCard;
@@ -53,7 +54,6 @@ export class GameComponent implements OnInit {
         this.game.pickCardAnimation = true;
         this.game.currentPlayer++;
         this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
-        this.game.playerImages = game.playerImages;
         this.saveGame();
         setTimeout(() => {
           this.game.playedCards.push(this.game.currentCard);
@@ -72,7 +72,8 @@ export class GameComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((change: string) => {
      console.log('Recieved change', change);
-     
+     this.game.playerImages[playerId] = change;
+     this.saveGame();
     });
   }
 
@@ -82,6 +83,7 @@ export class GameComponent implements OnInit {
     dialogRef.afterClosed().subscribe((name: string) => {
       if (name && name.length > 0) {
         this.game.players.push(name);
+        this.game.playerImages.push('man1.PNG');
         this.saveGame();
       }
     });
