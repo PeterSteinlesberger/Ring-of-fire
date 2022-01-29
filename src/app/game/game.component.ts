@@ -62,7 +62,7 @@ export class GameComponent implements OnInit {
         }, 1300);
       }
     } else {
-    alert('Please add minimum 2 players first.');
+      alert('Please add minimum 2 players first.');
     }
   }
 
@@ -70,11 +70,15 @@ export class GameComponent implements OnInit {
     console.log('Edit Player', playerId);
     const dialogRef = this.dialog.open(EditPlayerComponent);
     dialogRef.afterClosed().subscribe((change: string) => {
-      if(change) {
-     console.log('Recieved change', change);
-     this.game.playerImages[playerId] = change;
-     this.saveGame();
-    }
+      if (change) {
+        if (change == 'DELETE') {
+          this.game.players.splice(playerId, 1);
+          this.game.playerImages.splice(playerId, 1);
+        } else {
+          this.game.playerImages[playerId] = change;
+        }
+        this.saveGame();
+      }
     });
   }
 
