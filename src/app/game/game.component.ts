@@ -14,6 +14,7 @@ import { EditPlayerComponent } from '../edit-player/edit-player.component';
 export class GameComponent implements OnInit {
   game!: Game;
   gameId!: string;
+  gameOver: boolean = false;
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
@@ -48,7 +49,9 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (this.game.players.length > 1) {
+    if(this.game.stack.length == 0) {
+    this.gameOver = true;
+    } else { if (this.game.players.length > 1) {
       if (!this.game.pickCardAnimation) {
         this.game.currentCard = this.game.stack.pop();
         this.game.pickCardAnimation = true;
@@ -63,7 +66,9 @@ export class GameComponent implements OnInit {
       }
     } else {
       alert('Please add minimum 2 players first.');
+    } 
     }
+
   }
 
   editPlayer(playerId: number) {
