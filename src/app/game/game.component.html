@@ -5,7 +5,7 @@
      <app-player-mobile (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'left.px': 20 + (i * 80), 'top.px': 20}" [name]="player"
      [playerActive]="i == game.currentPlayer"     class="player-position hide-desktop" ></app-player-mobile>
 
-     <div *ngIf="gameOver">
+     <div  *ngIf="gameOver">
          <img class="endscreen" src="assets/img/game_over_screen.jpg">
      </div>
 <div *ngIf="!gameOver" class="game-field">
@@ -26,9 +26,9 @@
     </div>
 </div>
 
-<app-game-info *ngIf="this.game.currentCard" [cardValue]="game.currentCard" class="pin-card"></app-game-info>
+<app-game-info  *ngIf="this.game.currentCard && !gameOver" [cardValue]="game.currentCard" class="pin-card"></app-game-info>
 
-<button  (click)="openDialog()" class="btn-add"   mat-fab color="primary" aria-label="Example icon button with a delete icon">
+<button *ngIf="!gameOver" (click)="openDialog()" class="btn-add"   mat-fab color="primary" aria-label="Example icon button with a delete icon">
     <mat-icon>add</mat-icon>
   </button>
   
