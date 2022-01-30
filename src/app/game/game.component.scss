@@ -19,11 +19,11 @@
         width: 160px;
         @media (max-width: 800px) {
             height: 190px;
-        width: 115px;
-                }
+            width: 115px;
+        }
     }
     @media (max-width: 800px) {
-margin-top: 420px;
+        margin-top: 420px;
     }
 }
 
@@ -44,7 +44,7 @@ margin-top: 420px;
         right: 235px;
         top: -120px;
         transform: scale(1) translateX(380px) translateY(-295px) rotate(-14deg);
-            }
+    }
 }
 
 .pick-card {
@@ -67,6 +67,23 @@ margin-top: 420px;
     }
     100% {
         transform: scale(1) translateX(380px) translateY(-295px) rotate(-14deg);
+    }
+}
+
+@media (max-width: 800px) {
+    @keyframes pick-card-animation {
+        0% {
+            transform: scale(1.1) translateY(-10px);
+        }
+        50% {
+            transform: scale(1.3) translateY(-10px);
+        }
+        80% {
+            transform: scale(1.3) translateX(100px) translateY(-140px);
+        }
+        100% {
+            transform: scale(1) translateX(160px) translateY(-215px) rotate(-14deg);
+        }
     }
 }
 
@@ -97,7 +114,7 @@ margin-top: 420px;
 
 .pin-card {
     position: absolute;
- bottom: 440px;
+    bottom: 440px;
     left: 90px;
     width: 300px;
 
@@ -105,11 +122,12 @@ margin-top: 420px;
         bottom: 0;
         left: 0;
         right: 0;
-    width: 100vw;
+        width: 100vw;
     }
 }
 
-app-player, app-player-mobile {
+app-player,
+app-player-mobile {
     cursor: pointer;
 
     &:hover {
