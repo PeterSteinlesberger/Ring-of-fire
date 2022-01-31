@@ -140,3 +140,11 @@ app-player-mobile {
     height: 100vh;
     object-fit: cover;
 }
+
+.preloaded-card {
+    position: absolute;
+    opacity: 0;
+    width: 10px;
+    height: 10px;
+    z-index: -99999;
+}

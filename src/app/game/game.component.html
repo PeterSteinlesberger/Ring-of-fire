@@ -8,6 +8,9 @@
      <div  *ngIf="gameOver">
          <img class="endscreen" src="assets/img/game_over_screen.jpg">
      </div>
+
+     <img class="preloaded-card" src="assets/img/cards/{{ game.stack[game.stack.length -1] }}.png">
+
 <div *ngIf="!gameOver" class="game-field">
     <div class="card-stack">
 
