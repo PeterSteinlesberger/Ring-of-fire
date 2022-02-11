@@ -14,7 +14,8 @@ import { EditPlayerComponent } from '../edit-player/edit-player.component';
 export class GameComponent implements OnInit {
   game!: Game;
   gameId!: string;
-  gameOver: boolean = false;
+  gameOver = false;
+  @Input() notEnoughPlayer = false;
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
@@ -40,6 +41,8 @@ export class GameComponent implements OnInit {
           this.game.stack = game.stack;
           this.game.pickCardAnimation = game.pickCardAnimation;
           this.game.currentCard = game.currentCard;
+
+          this.notEnoughPlayer = this.game.players.length < 2;
         });
     });
   }
@@ -49,26 +52,36 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if(this.game.stack.length == 0) {
-    this.gameOver = true;
-    } else { if (this.game.players.length > 1) {
-      if (!this.game.pickCardAnimation) {
-        this.game.currentCard = this.game.stack.pop();
-        this.game.pickCardAnimation = true;
-        this.game.currentPlayer++;
-        this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
-        this.saveGame();
-        setTimeout(() => {
-          this.game.playedCards.push(this.game.currentCard);
-          this.game.pickCardAnimation = false;
-          this.saveGame();
-        }, 1300);
-      }
+    if (this.game.stack.length == 0) {
+      this.gameOver = true;
     } else {
-      alert('Please add minimum 2 players first.');
-    } 
+      if (!this.notEnoughPlayer) {
+        if (!this.game.pickCardAnimation) {
+          this.game.currentCard = this.game.stack.pop();
+          this.game.pickCardAnimation = true;
+          this.game.currentPlayer++;
+          this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+          this.saveGame();
+          setTimeout(() => {
+            this.game.playedCards.push(this.game.currentCard);
+            this.game.pickCardAnimation = false;
+            this.saveGame();
+          }, 1300);
+        }
+      }
     }
 
+  }
+
+  miniInfo = false;
+
+  showMiniInfo(){
+    console.log("SHOW WORKS");
+    this.miniInfo = true;
+  }
+
+  hideMiniInfo(){
+    this.miniInfo = false;
   }
 
   editPlayer(playerId: number) {

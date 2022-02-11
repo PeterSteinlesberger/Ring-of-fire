@@ -17,14 +17,14 @@
         <!-- Card stack -->
         <img *ngFor="let card of [0, 1, 2, 3, 4, 5, 6]; let i = index;" [ngStyle]="{'right.px': i*2, 'bottom.px': i*1}"
             src="assets/img/cards/playing-card-backside.png">
-        <img (click)="takeCard()" class="top-card" [ngStyle]="{'right.px': 15, 'bottom.px': 9}"
+        <img (mouseenter)="showMiniInfo()" (mouseleave)="hideMiniInfo()" (click)="takeCard()" class="top-card" [ngStyle]="{'right.px': 15, 'bottom.px': 9}"
             src="assets/img/cards/playing-card-backside.png">
 
         <!-- Stack for played cards -->
         <img *ngFor="let card of game.playedCards" class="played-card" src="assets/img/cards/{{ card }}.png">
 
         <!-- Current cards and animation -->
-        <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card"
+        <img  (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card"
             [ngStyle]="{'right.px': 15, 'bottom.px': 9}" src="assets/img/cards/{{ game.currentCard }}.png">
     </div>
 </div>
@@ -35,4 +35,4 @@
     <mat-icon>add</mat-icon>
   </button>
   
-  <app-minimum-player-info></app-minimum-player-info>
+  <app-minimum-player-info *ngIf="notEnoughPlayer && miniInfo"></app-minimum-player-info>
