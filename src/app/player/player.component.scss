@@ -2,12 +2,13 @@
     height: 70px;
     width: 210px;
     display: flex;
+    overflow: hidden;
     align-items: center;
     background-image: url("../../assets/img/players/player-field-removebg-preview.png");
     background-size: auto 70px;
     span {
-        font-size: 21px;
-        margin-left: 16px;
+        font-size: 17px;
+        margin-left: 14px;
         color: white;
         font-family: "Kaushan Script", cursive;
     }
