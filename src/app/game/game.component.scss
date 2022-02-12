@@ -148,3 +148,25 @@ app-player-mobile {
     height: 10px;
     z-index: -99999;
 }
+
+.card-img {
+    position: absolute;
+    top: 390px;
+    height: 130px;
+
+    @media (max-width: 500px){ 
+        height: 105px;
+        top: 350px;
+    }
+}
+
+.ring-img {
+    position: absolute;
+    top: 160px;
+    height: 550px;
+    filter: brightness(1.4);
+
+    @media (max-width: 500px){ 
+        height: 450px;
+    }
+}

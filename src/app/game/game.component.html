@@ -6,7 +6,15 @@
      [playerActive]="i == game.currentPlayer"  [image]="game.playerImages[i]"   class="player-position hide-desktop" ></app-player-mobile>
 
      <div  *ngIf="gameOver">
-         <img class="endscreen" src="assets/img/game_over_screen.jpg">
+        <div class="background">
+            <span class="headline">First round over. <br> Push the START button. <br> :-P</span>
+            <img class="card-backside-img" src="assets/img/cardfromback.png">
+            <img class="ring-img" src="assets/img/fire-ring.png">
+            <div class="start-button">
+                <img (click)="newGame()" class="button-img" src="assets/img/button/start-button-final.png">
+            </div>
+            </div>
+            
      </div>
 
      <img class="preloaded-card" src="assets/img/cards/{{ game.stack[game.stack.length -1] }}.png">
@@ -31,7 +39,7 @@
 
 <app-game-info  *ngIf="this.game.currentCard && !gameOver" [cardValue]="game.currentCard" class="pin-card"></app-game-info>
 
-<button *ngIf="!gameOver" (click)="openDialog()" class="btn-add"   mat-fab color="primary" aria-label="Example icon button with a delete icon">
+<button *ngIf="!gameOver" (click)="openDialog()" class="btn-add"   mat-fab color="primary">
     <mat-icon>add</mat-icon>
   </button>
   

@@ -52,7 +52,7 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (this.game.stack.length == 0) {
+    if (this.game.stack.length == 50) {
       this.gameOver = true;
     } else {
       if (!this.notEnoughPlayer) {
@@ -76,7 +76,6 @@ export class GameComponent implements OnInit {
   miniInfo = false;
 
   showMiniInfo(){
-    console.log("SHOW WORKS");
     this.miniInfo = true;
   }
 
