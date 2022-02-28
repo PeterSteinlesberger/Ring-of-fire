@@ -20,9 +20,7 @@ export class GameComponent implements OnInit {
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    console.log('test');
     this.newGame();
-
     this.route.params.subscribe((params) => {
       console.log(params['id']);
       this.gameId = params['id'];
@@ -41,8 +39,7 @@ export class GameComponent implements OnInit {
           this.game.stack = game.stack;
           this.game.pickCardAnimation = game.pickCardAnimation;
           this.game.currentCard = game.currentCard;
-
-          this.notEnoughPlayer = this.game.players.length < 2;
+          this.notEnoughPlayer = this.game.players.length < 2;  // Minimum 2 players required
         });
     });
   }
@@ -50,6 +47,7 @@ export class GameComponent implements OnInit {
   newGame() {
     this.game = new Game();
   }
+
 
   takeCard() {
     if (this.game.stack.length == 51) {

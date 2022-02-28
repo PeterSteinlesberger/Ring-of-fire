@@ -1,22 +1,23 @@
+<app-player (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;"
+    [ngStyle]="{'top.px': 20 + (i * 80)}" [name]="player" [playerActive]="i == game.currentPlayer"
+    [image]="game.playerImages[i]" class="player-position hide-mobile"></app-player>
 
-<app-player (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 25 + (i * 80)}" [name]="player"
-     [playerActive]="i == game.currentPlayer"  [image]="game.playerImages[i]"    class="player-position hide-mobile" ></app-player>
+<app-player-mobile (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;"
+    [ngStyle]="{'left.px': 20 + (i * 46), 'top.px': 20}" [name]="player" [playerActive]="i == game.currentPlayer"
+    [image]="game.playerImages[i]" class="player-position hide-desktop"></app-player-mobile>
 
-     <app-player-mobile (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'left.px': 20 + (i * 80), 'top.px': 20}" [name]="player"
-     [playerActive]="i == game.currentPlayer"  [image]="game.playerImages[i]"   class="player-position hide-desktop" ></app-player-mobile>
+<!-- Gameover Endscreen -->
+<div *ngIf="gameOver">
+    <div class="background">
+        <span class="headline">GAME <br> <br> <br> OVER</span>
+        <img class="ring-img" src="assets/img/fire-ring.png">
+        <div class="start-button">
+            <img (click)="newGame()" class="button-img" src="assets/img/button/start-button-final.png">
+        </div>
+    </div>
+</div>
 
-     <div  *ngIf="gameOver">
-        <div class="background">
-            <span class="headline">First round over.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    - PUSH - &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  the start button. </span>
-            <img class="ring-img" src="assets/img/fire-ring.png">
-            <div class="start-button">
-                <img (click)="newGame()" class="button-img" src="assets/img/button/start-button-final.png">
-            </div>
-            </div>
-            
-     </div>
-
-     <img class="preloaded-card" src="assets/img/cards/{{ game.stack[game.stack.length -1] }}.png">
+<img class="preloaded-card" src="assets/img/cards/{{ game.stack[game.stack.length -1] }}.png">
 
 <div *ngIf="!gameOver" class="game-field">
     <div class="card-stack">
@@ -24,22 +25,24 @@
         <!-- Card stack -->
         <img *ngFor="let card of [0, 1, 2, 3, 4, 5, 6]; let i = index;" [ngStyle]="{'right.px': i*2, 'bottom.px': i*1}"
             src="assets/img/cards/playing-card-backside.png">
-        <img (mouseenter)="showMiniInfo()" (mouseleave)="hideMiniInfo()" (click)="takeCard()" class="top-card" [ngStyle]="{'right.px': 15, 'bottom.px': 9}"
-            src="assets/img/cards/playing-card-backside.png">
+        <img (mouseenter)="showMiniInfo()" (mouseleave)="hideMiniInfo()" (click)="takeCard()" class="top-card"
+            [ngStyle]="{'right.px': 15, 'bottom.px': 9}" src="assets/img/cards/playing-card-backside.png">
 
         <!-- Stack for played cards -->
         <img *ngFor="let card of game.playedCards" class="played-card" src="assets/img/cards/{{ card }}.png">
 
         <!-- Current cards and animation -->
-        <img  (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card"
+        <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card"
             [ngStyle]="{'right.px': 15, 'bottom.px': 9}" src="assets/img/cards/{{ game.currentCard }}.png">
     </div>
 </div>
 
-<app-game-info  *ngIf="this.game.currentCard && !gameOver" [cardValue]="game.currentCard" class="pin-card"></app-game-info>
+<app-game-info *ngIf="this.game.currentCard && !gameOver" [cardValue]="game.currentCard" class="pin-card">
+</app-game-info>
 
-<button *ngIf="!gameOver" (click)="openDialog()" class="btn-add"   mat-fab color="primary">
+<!-- add-button -->
+<button *ngIf="!gameOver" (click)="openDialog()" class="btn-add" mat-fab color="primary">
     <mat-icon>add</mat-icon>
-  </button>
-  
-  <app-minimum-player-info *ngIf="notEnoughPlayer && miniInfo"></app-minimum-player-info>
+</button>
+
+<app-minimum-player-info *ngIf="notEnoughPlayer && miniInfo"></app-minimum-player-info>
