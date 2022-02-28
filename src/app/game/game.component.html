@@ -1,4 +1,4 @@
-<app-player (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;"
+<app-player (mouseenter)="showEditPlayerInfo()" (mouseleave)="hideEditPlayerInfo()" (click)="editPlayer(i)" *ngFor="let player of game.players; let i = index;"
     [ngStyle]="{'top.px': 20 + (i * 80)}" [name]="player" [playerActive]="i == game.currentPlayer"
     [image]="game.playerImages[i]" class="player-position hide-mobile"></app-player>
 
@@ -46,3 +46,4 @@
 </button>
 
 <app-minimum-player-info *ngIf="notEnoughPlayer && miniInfo"></app-minimum-player-info>
+<app-player-info *ngIf="editPlayerInfo"></app-player-info>

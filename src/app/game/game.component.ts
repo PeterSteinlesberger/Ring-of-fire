@@ -17,6 +17,8 @@ export class GameComponent implements OnInit {
   gameOver = false;
   @Input() notEnoughPlayer = false;
   miniInfo = false;
+  editPlayerInfo = false;
+
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
@@ -79,6 +81,14 @@ export class GameComponent implements OnInit {
 
   hideMiniInfo(){
     this.miniInfo = false;
+  }
+
+  showEditPlayerInfo() {
+    this.editPlayerInfo = true;
+  }
+
+  hideEditPlayerInfo() {
+    this.editPlayerInfo = false;
   }
 
   editPlayer(playerId: number) {
