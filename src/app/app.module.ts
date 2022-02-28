@@ -31,6 +31,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { PlayerMobileComponent } from './player-mobile/player-mobile.component';
 import { EditPlayerComponent } from './edit-player/edit-player.component';
 import { MinimumPlayerInfoComponent } from './minimum-player-info/minimum-player-info.component';
+import { PlayerInfoComponent } from './player-info/player-info.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { MinimumPlayerInfoComponent } from './minimum-player-info/minimum-player
     GameInfoComponent,
     PlayerMobileComponent,
     EditPlayerComponent,
-    MinimumPlayerInfoComponent
+    MinimumPlayerInfoComponent,
+    PlayerInfoComponent
   ],
   imports: [
     HttpClientModule,

@@ -16,6 +16,7 @@ export class GameComponent implements OnInit {
   gameId!: string;
   gameOver = false;
   @Input() notEnoughPlayer = false;
+  miniInfo = false;
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
@@ -50,7 +51,7 @@ export class GameComponent implements OnInit {
 
 
   takeCard() {
-    if (this.game.stack.length == 51) {
+    if (this.game.stack.length == 0) {
       this.gameOver = true;
     } else {
       if (!this.notEnoughPlayer) {
@@ -71,7 +72,6 @@ export class GameComponent implements OnInit {
 
   }
 
-  miniInfo = false;
 
   showMiniInfo(){
     this.miniInfo = true;
