@@ -11,5 +11,4 @@ export class MinimumPlayerInfoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

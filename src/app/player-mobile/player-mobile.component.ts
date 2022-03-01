@@ -10,9 +10,11 @@ export class PlayerMobileComponent implements OnInit {
   @Input() name: any; 
   @Input() image: string = 'question-mark.png';
   @Input() playerActive: boolean = false;
- 
 
   constructor() { }
+
+
+
 
   ngOnInit(): void {
   }
