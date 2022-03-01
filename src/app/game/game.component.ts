@@ -22,12 +22,21 @@ export class GameComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) { }
 
+
+
   ngOnInit(): void {
+   
     this.newGame();
+    /**
+     * Get gameId by URL
+     */
     this.route.params.subscribe((params) => {
       console.log(params['id']);
       this.gameId = params['id'];
       console.log(this.gameId);
+      /**
+       * Initializing firestore
+       */
       this
         .firestore
         .collection('games')
@@ -51,7 +60,10 @@ export class GameComponent implements OnInit {
     this.game = new Game();
   }
 
-
+/**
+ * This function take cards when there are carss in the stack left, and show the player animation for the current player
+ * 
+ */
   takeCard() {
     if (this.game.stack.length == 0) {
       this.gameOver = true;
@@ -63,23 +75,31 @@ export class GameComponent implements OnInit {
           this.game.currentPlayer++;
           this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
           this.saveGame();
-          setTimeout(() => {
-            this.game.playedCards.push(this.game.currentCard);
-            this.game.pickCardAnimation = false;
-            this.saveGame();
-          }, 1300);
+          this.pushPlayedCards();
         }
       }
     }
-
   }
 
+  /**
+   * This function push the current card to the played card stack  
+   * 
+   */
+  pushPlayedCards() {
+    setTimeout(() => {
+      this.game.playedCards.push(this.game.currentCard);
+      this.game.pickCardAnimation = false;
+      this.saveGame();
+    }, 1300);
+  }
 
-  showMiniInfo(){
+ 
+  showMiniInfo() {
     this.miniInfo = true;
   }
 
-  hideMiniInfo(){
+
+  hideMiniInfo() {
     this.miniInfo = false;
   }
 
@@ -91,6 +111,10 @@ export class GameComponent implements OnInit {
     this.editPlayerInfo = false;
   }
 
+  /**
+   * This function delete a player
+   * 
+   */
   editPlayer(playerId: number) {
     console.log('Edit Player', playerId);
     const dialogRef = this.dialog.open(EditPlayerComponent);
@@ -107,9 +131,12 @@ export class GameComponent implements OnInit {
     });
   }
 
+  /**
+   * This function open the add-player dialog and add a player
+   * 
+   */
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
-
     dialogRef.afterClosed().subscribe((name: string) => {
       if (name && name.length > 0) {
         this.game.players.push(name);
@@ -119,6 +146,10 @@ export class GameComponent implements OnInit {
     });
   }
 
+  /**
+   * This function save the game on firestore
+   * 
+   */
   saveGame() {
     this
       .firestore

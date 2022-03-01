@@ -15,8 +15,11 @@ export class StartScreenComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * This function create a new game and navigate by routerURL
+   * 
+   */
   newGame() {
-    //Start game
     let game = new Game();
     this.firestore
    .collection('games')

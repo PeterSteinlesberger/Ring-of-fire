@@ -14,8 +14,11 @@ export class DialogAddPlayerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+/**
+ * This function close the dialog-add-player by click on "no thanks" button
+ * 
+ */
   onNoClick() {
     this.dialogRef.close();
   }
-
 }
